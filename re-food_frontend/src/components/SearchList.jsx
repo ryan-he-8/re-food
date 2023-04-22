@@ -9,6 +9,7 @@ export default function SearchList ({searchQuery, ingredients, addIngredient}) {
     return (
         <List>
             {ingredients
+            .filter((ingredient) => ingredient.amount === 0)
             .filter((ingredient) => matchQuery(searchQuery, ingredient.name))
             .map((ingredient) => (
                 <ListItem
