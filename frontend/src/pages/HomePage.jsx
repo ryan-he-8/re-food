@@ -4,20 +4,20 @@ import { Box, TextField} from '@mui/material'
 export default function HomePage() {
   return (
     <Box backgroundColor= '#B4D7C4'>
-<div
-            style={{
-                marginLeft: "0%",
-                fontSize: "4em",
-                color: 'white',
-                height: '30em'
-            }}
->
+
+      <div style={{ 
+        fontSize: "4em",
+        color: 'white',
+        height: '30em',
+        backgroundImage: "https://www.westerncity.com/sites/main/files/imagecache/lightbox/main-images/5d_organic_waste.jpg"
+
+        }}>
+
             <h1>
                 re-food
+            
+            
             </h1>
-            <Box backgroundColor= '#98C5AD'>
-
-            </Box>
             
             <h4>
                 the problem:
@@ -41,6 +41,7 @@ export default function HomePage() {
             If we can reduce the amount of food waste by even a little for everyone, we can make a huge impact!
 
             </h12>
+
             </div>
 
     </Box>
