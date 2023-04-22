@@ -48,7 +48,7 @@ export default function SearchSection(){
                 <SearchList searchQuery={searchQuery} ingredients={ingredients} addIngredient={(ingredientName) => addIngredient(ingredientName)}/>
                 </Box>
             </Grid>
-            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'100vh'}>
+            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'90vh'}>
                 <Box 
                 margin={8}
                 height={'100%'}
