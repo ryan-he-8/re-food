@@ -3,37 +3,8 @@ import { Box, Grid, Button } from '@mui/material';
 import IngredientList from './IngredientList';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
-export default function SearchSection(){
+export default function SearchSection({ingredients, addIngredient, deleteIngredient, clearIngredients, switchToRecipe}){
     const [searchQuery, setSearchQuery] = React.useState("")
-    const [ingredients, setIngredients] = React.useState([
-        {name: 'chicken',
-        id: 1,
-        amount: 0},
-        {name: 'carrot',
-        id: 2,
-        amount: 0},
-        {name: 'apple',
-        id: 3,
-        amount: 0}
-    ]);
-    function addIngredient(ingredientName){
-        const newIngredients = ingredients.map((ingredient) => {
-            if(ingredient.name === ingredientName){
-                return {...ingredient, amount: ingredient.amount + 1}
-            }
-            return ingredient;
-        })
-        setIngredients(newIngredients);
-    }
-    function deleteIngredient(ingredientName){
-        const newIngredients = ingredients.map((ingredient) => {
-            if(ingredient.name === ingredientName){
-                return {...ingredient, amount: 0}
-            }
-            return ingredient;
-        })
-        setIngredients(newIngredients);
-    }
     return (
         <Grid 
         direction='row'
@@ -69,13 +40,23 @@ export default function SearchSection(){
                         margin: 2
                     }} 
                     disableRipple={true}
-                    variant="contained" color="primary">Clear</Button>
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => {clearIngredients()}}
+                    >
+                        Clear
+                    </Button>
                     <Button sx={{
                         flex: 1,
                         margin: 2
                     }}
                     disableRipple={true}
-                    variant="contained" color="primary">Generate</Button>
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => {switchToRecipe()}}
+                    >
+                        Generate
+                    </Button>
                     {/*clear and generate buttons */}
                 </Box>
             </Grid>

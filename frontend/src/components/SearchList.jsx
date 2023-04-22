@@ -13,10 +13,11 @@ export default function SearchList ({searchQuery, ingredients, addIngredient}) {
             .filter((ingredient) => matchQuery(searchQuery, ingredient.name))
             .map((ingredient) => (
                 <ListItem
+                key={ingredient.name}
                 secondaryAction = {
-                    <IconButton>
-                        <AddBoxOutlined
-                        onClick={() => addIngredient(ingredient.name)}/>
+                    <IconButton
+                    onClick={() => addIngredient(ingredient.name)}>
+                        <AddBoxOutlined/>
                     </IconButton>
                 }>
                     {ingredient.name}

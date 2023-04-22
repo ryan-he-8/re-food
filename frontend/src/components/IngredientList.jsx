@@ -10,7 +10,7 @@ export default function IngredientList({ingredients, deleteIngredient}) {
                 .filter((ingredient) => ingredient.amount > 0)
                 .map((ingredient) => (
                     <ListItem
-                    key = {ingredient}
+                    key = {ingredient.name}
                     secondaryAction = {
                     <IconButton onClick={() => deleteIngredient(ingredient.name)}>
                         <DeleteIcon/>
