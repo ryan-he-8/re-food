@@ -8,7 +8,7 @@ export default function RecipeImage({image, title, summary}) {
         alignItems={'center'} 
         justifyContent={'center'}
         >
-            <Box margin={3} display='flex' sx={{height: 300, width: 400}} borderColor='blue' border={5}>
+            <Box margin={3} display='flex' sx={{height: 350, width: 450}} backgroundColor='#98C5AD' border={0} borderRadius ='5px'>
 
             </Box>
             <Box>
