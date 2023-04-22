@@ -7,13 +7,16 @@ import { Link } from "react-router-dom";
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  typography: {
+    fontFamily: 'Roboto'
+  },
   status: {
     danger: '#e53e3e',
   },
   palette: {
     primary: {
       main: '#66B088',
-      darker: '#98C5AD',
+      background: '#B4D7C4',
     },
     neutral: {
       main: '#64748B',

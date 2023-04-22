@@ -1,7 +1,10 @@
 import * as React from 'react';
+import { useState } from 'react';
 import {TextField, IconButton, Autocomplete, InputAdornment} from '@mui/material';
 import {searchIcon} from '@mui/icons-material';
 import { AddBoxOutlined } from '@mui/icons-material';
+import {Box} from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 export default function SearchBar({searchQuery, setSearchQuery, ingredients}) {
   return (
     <form style={{
@@ -18,6 +21,10 @@ export default function SearchBar({searchQuery, setSearchQuery, ingredients}) {
             }}
         >
             {searchQuery}
+            <Box
+            // display={'flex'}
+            border={5}>
+            </Box>
         </TextField>
         
        

@@ -1,0 +1,4 @@
+root: C:\Users\antho\.vscode\codingproj\re-food\frontend 
+path: C:\Program Files\nodejs 
+arch: 64 
+proxy: none
