@@ -7,9 +7,10 @@ import {
 } from "react-router-dom";
 import SearchSection from './components/SearchSection';
 import Header from './components/Header';
-import RecipeDisplay from './pages/RecipeDisplay';
+import RecipeDisplay from './components/RecipeDisplay';
 import Home from './pages/Home';
 import HomePage from './pages/HomePage';
+import IngredientCart from './pages/IngredientCart';
 function App() {
   const theme = useTheme();
   return (
@@ -17,7 +18,7 @@ function App() {
       <Header/>
       <Switch>
           <Route path="/find_recipe">
-            <SearchSection />
+            <IngredientCart/>
           </Route>
           <Route path="/recipe">
             <RecipeDisplay />
