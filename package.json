@@ -1,0 +1,27 @@
+{
+  "name": "re-backend",
+  "version": "0.0.1",
+  "description": "backend for the re-food backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryan-he-8/re-food.git"
+  },
+  "author": "Guy Wilks, Ryan He",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryan-he-8/re-food/issues"
+  },
+  "homepage": "https://github.com/ryan-he-8/re-food#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "free-google-image-search": "^1.0.0",
+    "google-images": "^2.1.0",
+    "node-fetch": "^2.6.9",
+    "xmldom": "^0.6.0"
+  }
+}
