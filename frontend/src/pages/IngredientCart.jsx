@@ -47,9 +47,28 @@ export default function IngredientCart() {
         // filler, need to make api request for real recipe
         let options = ['cook it', 'bake it', 'make it']
         const newRecipe = {
+            name: 'example recipe',
+            image: 'https://fastly.picsum.photos/id/1000/200/300.jpg?hmac=fTFlkBSHCXIXMoNE-1_EshZ91TrzHgY8YhIzYDRwH2c',
             instructions: options[Math.floor(Math.random() * options.length)]
         }
         setRecipe(newRecipe);
+    }
+    function saveRecipe(favRecipe) {
+        // save recipe to local storage
+        let uuid = Math.floor(Math.random() * 1000000000);
+        
+        let tempRecipe = {
+            name: favRecipe.name,
+            image: favRecipe.image,
+            description: favRecipe.instructions,
+            id: uuid
+        }
+        let favorites = JSON.parse(localStorage.getItem("saved"));
+        if (favorites === null) {
+            favorites = {favorites: []};
+        }
+        favorites.favorites.push(tempRecipe);
+        localStorage.setItem("saved", JSON.stringify(favorites));
     }
     if (displayRecipe) {
         return (
@@ -58,6 +77,7 @@ export default function IngredientCart() {
             switchToCart={() => setDisplayRecipe(false)}
             recipe = {recipe}
             generateRecipe={() => generateRecipe(ingredients)}
+            saveRecipe = {() => saveRecipe(recipe)}
             />
         )
     } else {
@@ -71,7 +91,8 @@ export default function IngredientCart() {
             addIngredient = {(e) => addIngredient(e)}
             deleteIngredient = {(e) => deleteIngredient(e)}
             clearIngredients = {(e) => clearIngredients(e)}
-            switchToRecipe = {() => {generateRecipe(ingredients); setDisplayRecipe(true);}}
+            switchToRecipe = {() => {generateRecipe(ingredients); setDisplayRecipe(true);}
+        }
             />
         </div>
         

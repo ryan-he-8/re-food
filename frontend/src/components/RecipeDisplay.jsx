@@ -3,7 +3,7 @@ import { Grid, Box, Button } from '@mui/material'
 import RecipeImage from './RecipeImage';
 import IngredientSummary from './IngredientSummary';
 import RecipeSummary from './RecipeSummary';
-export default function RecipeDisplay({ingredients, switchToCart, recipe, generateRecipe}) {
+export default function RecipeDisplay({ingredients, switchToCart, recipe, generateRecipe, saveRecipe}) {
     return (
         <Box backgroundColor= '#B4D7C4'>
         <Grid
@@ -13,7 +13,7 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
         container
         spacing={1}
         >
-            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'85vh'}>
+            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'84vh'}>
                 <Grid container item xs = {8} border={5} borderColor={'red'} direction='column'>
                     <RecipeImage title={
                         'Chicken Soup'
@@ -56,7 +56,7 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     disableRipple={true}
                     variant="contained" 
                     color="primary"
-                    onClick={() => {}}
+                    onClick={() => saveRecipe()}
                     >
                         Save
                     </Button>
