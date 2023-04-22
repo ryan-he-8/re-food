@@ -46,8 +46,12 @@ app.get('/recipe', (req, res) => {
     res.status(400).send("No ingredients were sent.")
     return
   }
-  ingredientsList = req.headers["query"].split(",")
-  return runCompletion(ingredientsList)
+  let ingredientsList = req.headers["query"].split(",")
+  let recipe = runCompletion(ingredientsList)
+  let instructions = recipe.split("Instructions:")[1]
+  let ingredients = recipe.split("Instructions:")[0].split("Ingredients:")[1]
+  res.send([ingredients, instructions])
+  return
 })
 
 app.get('/image', (req, res) => {
