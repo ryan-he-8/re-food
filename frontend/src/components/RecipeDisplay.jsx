@@ -3,7 +3,7 @@ import { Grid, Box, Button } from '@mui/material'
 import RecipeImage from './RecipeImage';
 import IngredientSummary from './IngredientSummary';
 import RecipeSummary from './RecipeSummary';
-export default function RecipeDisplay({ingredients, switchToCart, recipe, generateRecipe, saveRecipe}) {
+export default function RecipeDisplay({ingredients, switchToCart, recipe, generateRecipe, saveRecipe, unsaveRecipe}) {
     return (
         <Box backgroundColor= '#B4D7C4'>
         <Grid
@@ -49,6 +49,7 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     >
                         Re-generate
                     </Button>
+                    {!recipe.saved ? 
                     <Button sx={{
                         flex: 1,
                         margin: 2
@@ -59,7 +60,19 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     onClick={() => saveRecipe()}
                     >
                         Save
-                    </Button>
+                    </Button> : 
+                    <Button
+                    sx={{
+                        flex: 1,
+                        margin: 2
+                    }}
+                    disableRipple={true}
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => unsaveRecipe()}
+                    >
+                        Unsave
+                    </Button>}
                     {/*clear and generate buttons */}
                 </Box>
             </Grid>

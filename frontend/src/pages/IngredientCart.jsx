@@ -44,30 +44,44 @@ export default function IngredientCart() {
     }
     function generateRecipe(ingredientsList) {
         const endpoint = ''
+        let id = Math.floor(Math.random() * 1000000000);
         // filler, need to make api request for real recipe
         let options = ['cook it', 'bake it', 'make it']
         const newRecipe = {
             name: 'example recipe',
             image: 'https://fastly.picsum.photos/id/1000/200/300.jpg?hmac=fTFlkBSHCXIXMoNE-1_EshZ91TrzHgY8YhIzYDRwH2c',
-            instructions: options[Math.floor(Math.random() * options.length)]
+            instructions: options[Math.floor(Math.random() * options.length)],
+            saved: false,
+            id: id
         }
         setRecipe(newRecipe);
     }
     function saveRecipe(favRecipe) {
         // save recipe to local storage
-        let uuid = Math.floor(Math.random() * 1000000000);
-        
         let tempRecipe = {
             name: favRecipe.name,
             image: favRecipe.image,
             description: favRecipe.instructions,
-            id: uuid
+            id: favRecipe.id
         }
         let favorites = JSON.parse(localStorage.getItem("saved"));
         if (favorites === null) {
             favorites = {favorites: []};
         }
         favorites.favorites.push(tempRecipe);
+        console.log(tempRecipe)
+        console.log(favorites)
+        console.log(recipe)
+        localStorage.setItem("saved", JSON.stringify(favorites));
+    }
+    function unsaveRecipe(favRecipe) {
+        // remove recipe from local storage
+        let favorites = JSON.parse(localStorage.getItem("saved"));
+        if (favorites === null) {
+            favorites = {favorites: []};
+        }
+        let newFavorites = favorites.favorites.filter((recipe) => recipe.id !== favRecipe.id);
+        favorites.favorites = newFavorites;
         localStorage.setItem("saved", JSON.stringify(favorites));
     }
     if (displayRecipe) {
@@ -77,7 +91,8 @@ export default function IngredientCart() {
             switchToCart={() => setDisplayRecipe(false)}
             recipe = {recipe}
             generateRecipe={() => generateRecipe(ingredients)}
-            saveRecipe = {() => saveRecipe(recipe)}
+            saveRecipe = {() => {saveRecipe(recipe); setRecipe({...recipe, saved: true})}}
+            unsaveRecipe = {() => {unsaveRecipe(recipe); setRecipe({...recipe, saved: false})}}
             />
         )
     } else {
