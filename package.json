@@ -23,7 +23,11 @@
     "google-images": "^2.1.0",
     "node-fetch": "^2.6.9",
     "openai": "^3.2.1",
+<<<<<<< Updated upstream
     "react-router-dom": "^5.2.0",
+=======
+    "replicate": "^0.11.1",
+>>>>>>> Stashed changes
     "xmldom": "^0.6.0"
   }
 }
