@@ -1,16 +1,32 @@
 import logo from './logo.svg';
+import {useTheme} from '@mui/material/styles';
 import './App.css';
+import {
+  Switch,
+  Route,
+} from "react-router-dom";
 import SearchSection from './components/SearchSection';
 import Header from './components/Header';
 import RecipeDisplay from './pages/RecipeDisplay';
-import IngredientCart from './pages/IngredientCart';
+import Home from './pages/Home';
 import HomePage from './pages/HomePage';
 function App() {
+  const theme = useTheme();
   return (
-    <div className="App">
+      <div style={{backgroundColor: theme.secondary}}>
       <Header/>
-      <HomePage/>
-    </div>
+      <Switch>
+          <Route path="/find_recipe">
+            <SearchSection />
+          </Route>
+          <Route path="/recipe">
+            <RecipeDisplay />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+        </div>
   );
 }
 
