@@ -13,7 +13,7 @@ export default function RecipeDisplay() {
         container
         spacing={1}
         >
-            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'90vh'}>
+            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'sh'}>
                 <Grid container item xs = {8} border={5} borderColor={'red'} direction='column'>
                     <RecipeImage title={
                         'Chicken Soup'
