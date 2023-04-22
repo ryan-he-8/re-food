@@ -4,6 +4,7 @@ import SearchSection from './components/SearchSection';
 import Header from './components/Header';
 import RecipeDisplay from './pages/RecipeDisplay';
 import IngredientCart from './pages/IngredientCart';
+import HomePage from './pages/HomePage';
 function App() {
   return (
     <div className="App">

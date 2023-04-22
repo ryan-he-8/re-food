@@ -17,6 +17,7 @@ export default function SearchBar({searchQuery, setSearchQuery, ingredients}) {
             onChange = {(e) => {setSearchQuery(e.target.value)}}
             style={{
               width: '100%',
+              //color: '#CFEBDC'
 
             }}
         >
