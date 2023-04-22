@@ -35,14 +35,6 @@ export default function Header(){
             <Toolbar style={{
                 justifyContent: 'space-between',
             }}>
-            <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-        </IconButton>
 
             <Box style={{
                 paddingTop: "1.0em", 
@@ -51,41 +43,31 @@ export default function Header(){
             
             fontSize: 'h4.fontSize'
         }}>
-            {/* <Box> */}
             <a href="/home" style={{
-                fontSize: 'h6.fontSize',
                 textDecoration: "none", 
                 color:"white", 
                 paddingRight: "1.5em"
             }}>home</a>
-
-            {/* </Box> */}
-            {/* <Box> */}
             <a href="/find_recipe" style={{
-                fontSize: '1em',
                 textDecoration: "none", 
                 color:"white", 
                 paddingRight: "1.5em"
             }}>find recipe</a>
-            {/* </Box> */}
-            {/* <Box> */}
             <a href="/favorites" style={{
-                fontSize: '1em',
                 textDecoration: "none", 
                 color:"white", 
-                paddingRight: "22em"
             }}>favorites</a>
-            {/* </Box> */}
-            {/* <Box> */}
+        </Box>
+        <Box sx={{
+            fontSize: 'h1.fontSize',
+        }}>
             <a href="/home" style={{
-                fontSize: '2em',
+                fontSize: 'h1.fontSie',
                 textDecoration: "none", 
                 color:"white", 
-                paddingRight: "2em"
             }}>re-food</a>
-            {/* </Box> */}
-
         </Box>
+
         </Toolbar>
         </AppBar>
     )

@@ -5,7 +5,7 @@ export default function IngredientSummary({ingredients}) {
     return (
         // two column list of ingredients that are in List with max height and overflow scrollable
         <List sx={{
-            maxHeight: '20vh',
+            flex: 1,
             overflow: 'scroll'
         }}>
             {ingredients

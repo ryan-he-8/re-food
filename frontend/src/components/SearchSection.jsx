@@ -1,39 +1,10 @@
 import * as React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Button } from '@mui/material';
 import IngredientList from './IngredientList';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
-export default function SearchSection(){
+export default function SearchSection({ingredients, addIngredient, deleteIngredient, clearIngredients, switchToRecipe}){
     const [searchQuery, setSearchQuery] = React.useState("")
-    const [ingredients, setIngredients] = React.useState([
-        {name: 'chicken',
-        id: 1,
-        amount: 0},
-        {name: 'carrot',
-        id: 2,
-        amount: 0},
-        {name: 'apple',
-        id: 3,
-        amount: 0}
-    ]);
-    function addIngredient(ingredientName){
-        const newIngredients = ingredients.map((ingredient) => {
-            if(ingredient.name === ingredientName){
-                return {...ingredient, amount: ingredient.amount + 1}
-            }
-            return ingredient;
-        })
-        setIngredients(newIngredients);
-    }
-    function deleteIngredient(ingredientName){
-        const newIngredients = ingredients.map((ingredient) => {
-            if(ingredient.name === ingredientName){
-                return {...ingredient, amount: 0}
-            }
-            return ingredient;
-        })
-        setIngredients(newIngredients);
-    }
     return (
         <Grid 
         direction='row'
@@ -48,14 +19,45 @@ export default function SearchSection(){
                 <SearchList searchQuery={searchQuery} ingredients={ingredients} addIngredient={(ingredientName) => addIngredient(ingredientName)}/>
                 </Box>
             </Grid>
-            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'90vh'}>
+            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'80vh'}>
                 <Box 
                 margin={8}
-                height={'100%'}
+                marginBottom={4}
+                flexGrow={1}
                 borderColor={'black'}
                 border={1}
                 borderRadius={2}>
                     <IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>
+                </Box>
+                <Box 
+                border={1} 
+                flexDirection={'row'} 
+                display={'flex'}
+                margin={8}
+                marginY={0}> 
+                    <Button sx={{
+                        flex: 1,
+                        margin: 2
+                    }} 
+                    disableRipple={true}
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => {clearIngredients()}}
+                    >
+                        Clear
+                    </Button>
+                    <Button sx={{
+                        flex: 1,
+                        margin: 2
+                    }}
+                    disableRipple={true}
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => {switchToRecipe()}}
+                    >
+                        Generate
+                    </Button>
+                    {/*clear and generate buttons */}
                 </Box>
             </Grid>
         </Grid>
