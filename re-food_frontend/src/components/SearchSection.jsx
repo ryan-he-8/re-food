@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import IngredientList from './IngredientList';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
@@ -41,12 +41,22 @@ export default function SearchSection(){
         alignItems='flex-start'
         container
         spacing={1}>
-            <Grid container item xs = {6} direction = 'column'>
+            <Grid container item xs = {5} direction = 'column'>
+                <Box
+                margin={8}>
                 <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
                 <SearchList searchQuery={searchQuery} ingredients={ingredients} addIngredient={(ingredientName) => addIngredient(ingredientName)}/>
+                </Box>
             </Grid>
-            <Grid container item xs = {6} direction = 'column'>
-                <IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>
+            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'100vh'}>
+                <Box 
+                margin={8}
+                height={'100%'}
+                borderColor={'black'}
+                border={1}
+                borderRadius={2}>
+                    <IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>
+                </Box>
             </Grid>
         </Grid>
     );
