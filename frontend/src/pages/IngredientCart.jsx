@@ -17,6 +17,7 @@ export default function IngredientCart() {
         id: 3,
         amount: 0}
     ]);
+    const [recipe, setRecipe] = React.useState({});
     function addIngredient(ingredientName){
         const newIngredients = ingredients.map((ingredient) => {
             if(ingredient.name === ingredientName){
@@ -41,11 +42,23 @@ export default function IngredientCart() {
         })
         setIngredients(newIngredients)
     }
+    function generateRecipe(ingredientsList) {
+        const endpoint = ''
+        // filler, need to make api request for real recipe
+        let options = ['cook it', 'bake it', 'make it']
+        const newRecipe = {
+            instructions: options[Math.floor(Math.random() * options.length)]
+        }
+        setRecipe(newRecipe);
+    }
     if (displayRecipe) {
         return (
             <RecipeDisplay 
             ingredients={ingredients}
-            switchToCart={() => setDisplayRecipe(false)}/>
+            switchToCart={() => setDisplayRecipe(false)}
+            recipe = {recipe}
+            generateRecipe={() => generateRecipe(ingredients)}
+            />
         )
     } else {
         return (
@@ -58,7 +71,7 @@ export default function IngredientCart() {
             addIngredient = {(e) => addIngredient(e)}
             deleteIngredient = {(e) => deleteIngredient(e)}
             clearIngredients = {(e) => clearIngredients(e)}
-            switchToRecipe = {() => setDisplayRecipe(true)}
+            switchToRecipe = {() => {generateRecipe(ingredients); setDisplayRecipe(true);}}
             />
         </div>
         
