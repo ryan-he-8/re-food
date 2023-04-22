@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/ryan-he-8/re-food#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "free-google-image-search": "^1.0.0",
+    "google-images": "^2.1.0",
+    "node-fetch": "^2.6.9",
+    "xmldom": "^0.6.0"
   }
 }
