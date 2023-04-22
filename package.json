@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/ryan-he-8/re-food#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "openai": "^3.2.1",
+    "readline-sync": "^1.4.10"
   }
 }
