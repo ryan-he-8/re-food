@@ -2,9 +2,8 @@ import * as React from 'react';
 import { List, Box } from '@mui/material'
 import IngredientList from '../components/IngredientList';
 import SearchSection from '../components/SearchSection';
-//import './Background.css';
 
-export default function IncredientCart() {
+export default function IngredientCart() {
 
     const [ingredients, setIngredients] = React.useState([
         {name: 'Chicken'},
