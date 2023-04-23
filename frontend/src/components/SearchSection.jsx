@@ -24,24 +24,31 @@ export default function SearchSection({ingredients, addIngredient, deleteIngredi
                 margin={8}
                 marginBottom={4}
                 flexGrow={1}
-                borderColor={'black'}
-                border={1}
+                //borderColor={'black'}
+                backgroundColor={'#98C5AD'}
+                //border={1}
                 borderRadius={2}>
                     <IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>
                 </Box>
                 <Box 
-                border={1} 
+                //border={1} 
                 flexDirection={'row'} 
                 display={'flex'}
                 margin={8}
-                marginY={0}> 
+                marginY={0}>
                     <Button sx={{
                         flex: 1,
                         margin: 2
                     }} 
                     disableRipple={true}
                     variant="contained" 
-                    color="primary"
+                    style={{
+                        background: '#84B99D',
+                        fontWeight: 'bold',
+                        fontSize: 30,
+                        border: 'none',
+                        float: 'center', textTransform: 'lowercase'
+                      }}
                     onClick={() => {clearIngredients()}}
                     >
                         Clear
@@ -51,11 +58,19 @@ export default function SearchSection({ingredients, addIngredient, deleteIngredi
                         margin: 2
                     }}
                     disableRipple={true}
+                    style={{
+                        fontFamily: 'Roboto',
+                        background: '#84B99D',
+                        fontWeight: 'bold',
+                        fontSize: 30,
+                        border: 'none',
+                        float: 'center', textTransform: 'lowercase'
+                      }}
+                  
                     variant="contained" 
-                    color="primary"
                     onClick={() => {switchToRecipe()}}
                     >
-                        Generate
+                        generate
                     </Button>
                     {/*clear and generate buttons */}
                 </Box>
