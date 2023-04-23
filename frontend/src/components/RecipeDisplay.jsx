@@ -14,14 +14,14 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
         spacing={1}
         >
             <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'84vh'} flexDirection={'column'}>
-                <Grid container item xs = {8} border={5} borderColor={'red'} direction='column'>
+                <Grid container item xs = {8} border={1} borderColor={'white'} direction='column'>
                     <RecipeImage image={recipe.image} title={
                         recipe.name
                     } summary = {
                         ''
                     }/>
                 </Grid>
-                <Grid container item xs = {4} direction='column' justifyContent={'center'} border={5} borderColor={'red'}>
+                <Grid container item xs = {4} direction='column' justifyContent={'center'} border={1} borderColor={'white'} overflow={'scroll'}>
                     <Button
                     onClick={() => switchToCart()}
                     variant='contained'>
@@ -31,7 +31,7 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     ingredients={ingredients}/>
                 </Grid>
             </Grid>
-            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} border={5} borderColor={'red'}>
+            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} border={1} borderColor={'white'}>
                 <RecipeSummary instructions={recipe.instructions}/>
                 <Box 
                 border={1} 

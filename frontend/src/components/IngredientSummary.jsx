@@ -10,10 +10,12 @@ export default function IngredientSummary({ingredients}) {
             overflow: 'scroll'
         }}>
             {ingredients
-            .filter((ingredient) => (ingredient.amount > 0))
+            .filter((ingredient) => (ingredient.quantity > 0))
             .map((ingredient) => (
-                <ListItem>
-                    <ListItemText primary={ingredient.name} secondary={ingredient.amount}/>
+                <ListItem
+                    key={ingredient.name}
+                >
+                    <ListItemText primary={ingredient.name} secondary={ingredient.quantity}/>
                 </ListItem>))}
         </List>
     )

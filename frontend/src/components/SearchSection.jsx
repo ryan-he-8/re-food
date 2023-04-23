@@ -15,7 +15,7 @@ export default function SearchSection({ingredients, addIngredient, deleteIngredi
             <Grid container item xs = {5} direction = 'column'>
                 <Box
                 margin={8}>
-                <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+                <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} addIngredient={addIngredient}/>
                 <SearchList searchQuery={searchQuery} ingredients={ingredients} addIngredient={(ingredientName) => addIngredient(ingredientName)}/>
                 </Box>
             </Grid>

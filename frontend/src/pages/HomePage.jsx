@@ -19,7 +19,7 @@ export default function HomePage() {
   }}>
 
       <div style={{ 
-        backgroundImage: "url('https://www.rd.com/wp-content/uploads/2016/11/GettyImages-162980721-JVedit.jpg')",
+        background: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.rd.com/wp-content/uploads/2016/11/GettyImages-162980721-JVedit.jpg')",
         backgroundRepeat: 'no-repeat',   width:'3000px', height: '1500px',
         alignItems: "center"
 
@@ -45,7 +45,7 @@ export default function HomePage() {
             Simply input how much of each item you have, and we'll find a recipe tailored just for you!
 
             
-            If we can reduce the amount of food waste by even a little for everyone, we can make a huge impact!
+            If we can reduce the quantity of food waste by even a little for everyone, we can make a huge impact!
             </div>
             
             </div>

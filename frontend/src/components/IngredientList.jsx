@@ -7,7 +7,7 @@ export default function IngredientList({ingredients, deleteIngredient}) {
         <div>
             <List>
                 {ingredients
-                .filter((ingredient) => ingredient.amount > 0)
+                .filter((ingredient) => ingredient.quantity > 0)
                 .map((ingredient) => (
                     <ListItem
                     key = {ingredient.name}

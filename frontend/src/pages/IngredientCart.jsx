@@ -4,34 +4,28 @@ import IngredientList from '../components/IngredientList';
 import SearchSection from '../components/SearchSection';
 import RecipeDisplay from '../components/RecipeDisplay';
 import {getRecipe, getRecipeImage, getRecipeImageSD} from '../requests/getRequests'
+import ingredientsList from '../resources/ingredients';
 
 export default function IngredientCart() {
     const [displayRecipe, setDisplayRecipe] = React.useState(false);
-    const [ingredients, setIngredients] = React.useState([
-        {name: 'chicken',
-        id: 1,
-        amount: 0},
-        {name: 'carrot',
-        id: 2,
-        amount: 0},
-        {name: 'apple',
-        id: 3,
-        amount: 0}
-    ]);
+    const [ingredients, setIngredients] = React.useState(ingredientsList);
     const [recipe, setRecipe] = React.useState({});
     function addIngredient(ingredientName){
         const newIngredients = ingredients.map((ingredient) => {
             if(ingredient.name === ingredientName){
-                return {...ingredient, amount: ingredient.amount + 1}
+                return {...ingredient, quantity: ingredient.quantity + 1}
             }
             return ingredient;
         })
+        if (!newIngredients.some((ingredient) => ingredient.name === ingredientName)){
+            newIngredients.push({name: ingredientName, quantity: 1, id: newIngredients.length})
+        }
         setIngredients(newIngredients);
     }
     function deleteIngredient(ingredientName){
         const newIngredients = ingredients.map((ingredient) => {
             if(ingredient.name === ingredientName){
-                return {...ingredient, amount: 0}
+                return {...ingredient, quantity: 0}
             }
             return ingredient;
         })
@@ -39,18 +33,18 @@ export default function IngredientCart() {
     }
     function clearIngredients() {
         const newIngredients = ingredients.map((ingredient) => {
-            return {...ingredient, amount: 0}
+            return {...ingredient, quantity: 0}
         })
         setIngredients(newIngredients)
     }
     function generateRecipe(ingredientsList) {
         console.log("in generateRecipe")
-        let newIngredientsList = []
-        for (let i=0; i < ingredientsList.length; i++) {
-            newIngredientsList.push(ingredientsList[i]['amount'] + " " + ingredientsList[i]["name"])
-        }
+        let newIngredientsList = ingredientsList
+        .filter((ingredient) => ingredient.quantity > 0)
+        .map((ingredient) => ingredient.quantity + " " + ingredient.name)
+
         console.log(newIngredientsList)
-       getRecipe(newIngredientsList).then((recipe) => {
+        getRecipe(newIngredientsList).then((recipe) => {
             console.log("name=" + recipe["name"])
             getRecipeImageSD(recipe["name"]).then((recipeImage) => {
                 console.log(recipeImage)
