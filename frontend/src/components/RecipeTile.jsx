@@ -27,22 +27,22 @@ export default function RecipeTile({recipe, setCache}) {
     return (
         <Box 
         sx={{
-            backgroundColor:"#008148", 
+            backgroundColor:"#5BA87F", 
             height: "auto", 
             width: "25%", 
             margin:"3em", 
             display:"inline-block", 
             borderRadius: "25px",
-            boxShadow: '1px 2px 9px #000000',
+            //boxShadow: '1px 2px 9px #000000',
             '&:hover': {
-                backgroundColor: '#072e1f',
+                backgroundColor: '#529671',
                 cursor: 'pointer'
             }}
         }
         onClick={() => openRecipe(recipe)}    
         >
             <Box className='dishimage' style={{margin:"2em"}}>
-                <Box style={{backgroundColor:"#FAE9E9", padding:"1.2em", borderRadius: "15px", boxShadow: '1px 2px 9px #F4AAB9'}}>
+                <Box style={{backgroundColor:"#7AC09A", padding:"1.2em", borderRadius: "15px"}}>
                     <img src={image} alt={name} style={{maxWidth: '100%', maxHeight: 'auto'}} />
                 </Box>
             </Box>
@@ -50,19 +50,26 @@ export default function RecipeTile({recipe, setCache}) {
                 className='dishname' 
                 sx={{
                     margin:"2em", 
-                    backgroundColor:"#2F3A2B", 
+                    backgroundColor:"#7AC09A", 
                     padding:"0.001em", 
                     borderRadius:"10px", 
-                    borderColor: "#FAE9E9", 
+                    borderColor: "#7AC09A", 
                     borderStyle: "solid", 
                     borderWidth: ".5em",
+                    fontFamily: 'Roboto',
+                    
+
+
                     
                 }}>
                 <Typography
                 sx ={{
                     overflow: "hidden",
                     textOverflow: "ellipsis",
-                    height: '3em'
+                    height: '3em',
+                    fontFamily: 'Roboto',
+                    fontWeight: 'bold',
+                    
                 }}
                 variant="h5"
                 color='white'
@@ -81,14 +88,19 @@ export default function RecipeTile({recipe, setCache}) {
             variant='contained'
             onClick={(e) => {removeFromCache(recipe); e.stopPropagation()}}
             sx={{
-                borderRadius: 3,
-                borderColor: '#FAE9E9',
-                backgroundColor: '#0A3F2B',
-                border: '10px solid',
+                //borderRadius: 3,
+                //borderColor: '#FAE9E9',
+                fontFamily: 'Roboto',
+                backgroundColor: '#7DB496',
+                //border: '10px solid',
                 '&:hover': {
-                    backgroundColor: '#072e1f'
-                }
-            }}>
+                    backgroundColor: '#327F55'
+                },
+                fontWeight: 'bold',
+                color: 'white', textTransform: 'lowercase'
+
+            }}
+            >
                 Remove from Favorites
             </Button>
             </Box>
