@@ -6,13 +6,16 @@ export default function IngredientSummary({ingredients}) {
         // two column list of ingredients that are in List with max height and overflow scrollable
         <List sx={{
             flex: 1,
+            maxHeight: '80%',
             overflow: 'scroll'
         }}>
             {ingredients
-            .filter((ingredient) => (ingredient.amount > 0))
+            .filter((ingredient) => (ingredient.quantity > 0))
             .map((ingredient) => (
-                <ListItem>
-                    <ListItemText primary={ingredient.name} secondary={ingredient.amount}/>
+                <ListItem
+                    key={ingredient.name}
+                >
+                    <ListItemText primary={ingredient.name} secondary={ingredient.quantity}/>
                 </ListItem>))}
         </List>
     )

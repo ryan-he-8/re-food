@@ -5,7 +5,12 @@ const GoogleImages = require('google-images');
 const { Configuration, OpenAIApi } = require("openai");
 const Replicate = require("replicate")
 require("dotenv").config();
- 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
+
 const client = new GoogleImages(process.env.AV1, process.env.AV2);
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -52,6 +57,7 @@ app.get('/recipe', (req, res) => {
   let recipe = runCompletion(ingredientsList)
   recipe.then((recipe) => {
     try{
+    recipe = recipe.replace("Directions:", "Instructions:")
       console.log(recipe)
       let name = recipe.split("Recipe")[0].trim()
       let instructions = recipe.split("Instructions:")[1].trim()
@@ -61,6 +67,7 @@ app.get('/recipe', (req, res) => {
         "instructions": instructions,
         "ingredients": ingredients
       })
+      return
     }catch(error){
       res.status(500).send("internal server error, please try again")
     }
