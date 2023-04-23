@@ -4,6 +4,7 @@ const port = 8080
 const GoogleImages = require('google-images');
 const { Configuration, OpenAIApi } = require("openai");
 const Replicate = require("replicate")
+const fs = require('fs');
 require("dotenv").config();
 const cors = require('cors');
 app.use(cors({
@@ -22,11 +23,15 @@ const replicate = new Replicate({
 
 app.get('/recipe', (req, res) => {
   async function runCompletion(ingredients) {
+    
+    let few_shot = fs.readFileSync('few_shot.txt', 'utf8');
+    console.log(few_shot);
+    
     message=[
-        {"role": "user", "content": "Give me a recipe using only "}
+        {"role": "user", "content": few_shot}
     ]
     for (let i=0; i < ingredients.length; i++) {
-        message[0].content += ingredients[i]
+        message[0].content += ingredients[i].trim()
         if (i < ingredients.length-1) {
             message[0].content += ", "
             if (i == ingredients.length-2) {
@@ -34,6 +39,7 @@ app.get('/recipe', (req, res) => {
             }
         }
     }
+    message[0].content += ". If answered previously, please restate."
     console.log(message)
     try {
         const completion = await openai.createChatCompletion({
@@ -57,7 +63,7 @@ app.get('/recipe', (req, res) => {
   let recipe = runCompletion(ingredientsList)
   recipe.then((recipe) => {
     try{
-    recipe = recipe.replace("Directions:", "Instructions:")
+      recipe = recipe.replace("Directions:", "Instructions:")
       console.log(recipe)
       let name = recipe.split("Recipe")[0].trim()
       let instructions = recipe.split("Instructions:")[1].trim()
