@@ -107,7 +107,7 @@ export default function IngredientCart() {
     } else {
         return (
             
-            <Box backgroundColor= '#B4D7C4'>
+            <Box backgroundColor= '#266543'>
                 <div>
                     <SearchSection
                     loading = {loading}
