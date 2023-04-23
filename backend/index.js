@@ -25,7 +25,7 @@ app.get('/recipe', (req, res) => {
   async function runCompletion(ingredients) {
     
     let few_shot = fs.readFileSync('few_shot.txt', 'utf8');
-    console.log(few_shot);
+    console.log("few-shot: " + few_shot);
     
     message=[
         {"role": "user", "content": few_shot}

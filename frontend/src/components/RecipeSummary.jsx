@@ -5,9 +5,12 @@ export default function RecipeSummary({instructions}) {
         <Box
         flex={1}
         overflow={'scroll'}
-        border={5}
+        color={'white'}
+        font={'Roboto'}
+        fontSize={25}
+        //border={5}
         whiteSpace={'pre-line'}
-        fontSize={'2em'}>
+        >
             {instructions}
         </Box>
     )
