@@ -38,12 +38,9 @@ app.get('/recipe', (req, res) => {
         console.log("request worked")
         return completion.data.choices[0].message.content;
       } catch (error) {
-        if (error.response) {
-          console.log(error.response.status);
-          console.log(error.response.data);
-        } else {
-          console.log(error.message);
-        }
+        console.log(error)
+        res.status(500).send("internal server error, please try again")
+        return
       }
   }
   if (!req.headers["query"]) {
@@ -54,15 +51,19 @@ app.get('/recipe', (req, res) => {
   let ingredientsList = req.headers["query"].split(",")
   let recipe = runCompletion(ingredientsList)
   recipe.then((recipe) => {
-    console.log(recipe)
-    let name = recipe.split("Recipe")[0].trim()
-    let instructions = recipe.split("Instructions:")[1].trim()
-    let ingredients = recipe.split("Instructions:")[0].split("Ingredients:")[1].trim()
-    res.send({
-      "name": name,
-      "instructions": instructions,
-      "ingredients": ingredients
-    })
+    try{
+      console.log(recipe)
+      let name = recipe.split("Recipe")[0].trim()
+      let instructions = recipe.split("Instructions:")[1].trim()
+      let ingredients = recipe.split("Instructions:")[0].split("Ingredients:")[1].trim()
+      res.send({
+        "name": name,
+        "instructions": instructions,
+        "ingredients": ingredients
+      })
+    }catch(error){
+      res.status(500).send("internal server error, please try again")
+    }
   })
   return
 })
@@ -87,16 +88,20 @@ app.get('/image', (req, res) => {
 
 app.get('/imagesd', (req, res) => {
   async function run_sd(text) {
-    const output = await replicate.run(
-        "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
-        {
-          input: {
-            prompt: text
+    try{
+      const output = await replicate.run(
+          "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
+          {
+            input: {
+              prompt: text
+            }
           }
+        );
+      res.send(output[0])
+      return
+        }catch(error){
+          res.status(500).send("internal server error please try again")
         }
-      );
-    res.send(output[0])
-    return
 }
 
   if (req.headers["query"] == "") { res.status(400).send("Empty query: Needs prompt in body"); return null }
