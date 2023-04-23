@@ -3,7 +3,8 @@ import { Box, Grid, Button } from '@mui/material';
 import IngredientList from './IngredientList';
 import SearchBar from './SearchBar';
 import SearchList from './SearchList';
-export default function SearchSection({ingredients, addIngredient, deleteIngredient, clearIngredients, switchToRecipe}){
+import loadingPan from '../images/loadingpan.gif'
+export default function SearchSection({loading, ingredients, addIngredient, deleteIngredient, clearIngredients, switchToRecipe}){
     const [searchQuery, setSearchQuery] = React.useState("")
     return (
         <Grid 
@@ -28,7 +29,7 @@ export default function SearchSection({ingredients, addIngredient, deleteIngredi
                 backgroundColor={'#98C5AD'}
                 //border={1}
                 borderRadius={2}>
-                    <IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>
+                    {loading?<img src={loadingPan} />:<IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>}
                 </Box>
                 <Box 
                 //border={1} 

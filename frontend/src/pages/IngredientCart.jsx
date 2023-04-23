@@ -9,6 +9,7 @@ import ingredientsList from '../resources/ingredients';
 export default function IngredientCart() {
     const [displayRecipe, setDisplayRecipe] = React.useState(false);
     const [ingredients, setIngredients] = React.useState(ingredientsList);
+    const [loading, setLoading] = React.useState(false);
     const [recipe, setRecipe] = React.useState({});
     function addIngredient(ingredientName){
         const newIngredients = ingredients.map((ingredient) => {
@@ -42,8 +43,8 @@ export default function IngredientCart() {
         let newIngredientsList = ingredientsList
         .filter((ingredient) => ingredient.quantity > 0)
         .map((ingredient) => ingredient.quantity + " " + ingredient.name)
-
         console.log(newIngredientsList)
+        setLoading(true)
         getRecipe(newIngredientsList).then((recipe) => {
             console.log("name=" + recipe["name"])
             getRecipeImageSD(recipe["name"]).then((recipeImage) => {
@@ -57,8 +58,9 @@ export default function IngredientCart() {
                     saved: false,
                     id: id
                 }
+                setLoading(false) 
                 setDisplayRecipe(true)
-                setRecipe(newRecipe);    
+                setRecipe(newRecipe);   
             })
        })
     }
@@ -93,6 +95,7 @@ export default function IngredientCart() {
     if (displayRecipe) {
         return (
             <RecipeDisplay 
+            loading={loading}
             ingredients={ingredients}
             switchToCart={() => setDisplayRecipe(false)}
             recipe = {recipe}
@@ -103,21 +106,21 @@ export default function IngredientCart() {
         )
     } else {
         return (
-    
+            
             <Box backgroundColor= '#B4D7C4'>
-    
-        <div>
-            <SearchSection
-            ingredients={ingredients}
-            addIngredient = {(e) => addIngredient(e)}
-            deleteIngredient = {(e) => deleteIngredient(e)}
-            clearIngredients = {(e) => clearIngredients(e)}
-            switchToRecipe = {() => {generateRecipe(ingredients);}
-        }
-            />
-        </div>
+                <div>
+                    <SearchSection
+                    loading = {loading}
+                    ingredients={ingredients}
+                    addIngredient = {(e) => addIngredient(e)}
+                    deleteIngredient = {(e) => deleteIngredient(e)}
+                    clearIngredients = {(e) => clearIngredients(e)}
+                    switchToRecipe = {() => {generateRecipe(ingredients);}
+                }
+                    />
+                </div>
         
-        </Box>
+            </Box>
     
         );
     }

@@ -3,7 +3,9 @@ import { Grid, Box, Button } from '@mui/material'
 import RecipeImage from './RecipeImage';
 import IngredientSummary from './IngredientSummary';
 import RecipeSummary from './RecipeSummary';
-export default function RecipeDisplay({ingredients, switchToCart, recipe, generateRecipe, saveRecipe, unsaveRecipe}) {
+import loadingPan from '../images/loadingpan.gif'
+
+export default function RecipeDisplay({loading, ingredients, switchToCart, recipe, generateRecipe, saveRecipe, unsaveRecipe}) {
     return (
         <Box backgroundColor= '#B4D7C4'>
         <Grid
@@ -31,14 +33,24 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     ingredients={ingredients}/>
                 </Grid>
             </Grid>
-            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} border={1} borderColor={'white'}>
-                <RecipeSummary instructions={recipe.instructions}/>
+            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} border={5} borderColor={'red'}>
+            {loading?<Box 
+                margin={8}
+                marginBottom={4}
+                flexGrow={1}
+                borderColor={'black'}
+                border={1}
+                borderRadius={2}>
+                    <img src={loadingPan} width="500px" height="300px"/>
+                </Box>:
+                <RecipeSummary instructions={recipe.instructions}/>}
                 <Box 
                 border={1} 
                 flexDirection={'row'} 
                 display={'flex'}
                 margin={8}
                 marginY={0}> 
+
                     <Button sx={{
                         flex: 1,
                         margin: 2
@@ -46,6 +58,7 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
                     disableRipple={true}
                     variant="contained" 
                     color="primary"
+                    
                     onClick={() => {generateRecipe()}}
                     >
                         Re-generate
