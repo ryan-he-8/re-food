@@ -26,18 +26,18 @@ export default function HomePage() {
         }}>
           
 
-      <div style={{paddingTop: '0em', fontWeight: 'bold',
+      <div style={{paddingTop: '0em', fontWeight: 'bold', 
     fontSize: "15em", color: 'white', textAlign: "center"}}> re-food </div>
             
       <div style={{paddingTop: '2em', fontWeight: 'bold',
     fontSize: "6em", color: 'white', textAlign: "center"}}> the problem: </div>
 
-      <div style={{fontSize: '2em', color: 'white', textAlign: "center"}}> Each year, 119 billion pounds of food is wasted in the United States. That equates to 130 billion meals and more than $408 billion in food thrown away each year. Shockingly, nearly 40% of all food in America is wasted. </div>
+      <div style={{paddingLeft: "1em", paddingRight: "1em", fontSize: '2em', color: 'white', textAlign: "center"}}> Each year, 119 billion pounds of food is wasted in the United States. That equates to 130 billion meals and more than $408 billion in food thrown away each year. Shockingly, nearly 40% of all food in America is wasted. </div>
 
       <div style={{fontWeight: 'bold',
     fontSize: "6em", color: 'white', textAlign: "center"}}> our solution: </div>
 
-      <div style={{fontSize: '2em', color: 'white', textAlign: "center"}}>re-food is an app that helps the average pecrson minimize food waste! 
+      <div style={{paddingLeft: "1em", paddingRight: "1em", fontSize: '2em', color: 'white', textAlign: "center"}}>re-food is an app that helps the average pecrson minimize food waste! 
             Don't know what to make with the leftover items in your fridge? 
             No problem!   
 
