@@ -22,14 +22,14 @@ export default function SearchBar({searchQuery, setSearchQuery, addIngredient}) 
               width: '100%',
               flexDirection: 'column',
               justifyContent: 'center',
-              backgroundColor: '#ACDDC3'
+              backgroundColor: '#58A57B'
             }}
             InputProps={{endAdornment: 
             <Button
             onClick={() => {addIngredient(searchQuery); setSearchQuery('')}}
             style={{
               fontFamily: 'Roboto',
-              background: '#84B99D',
+              background: '#7DB496',
               fontWeight: 'bold',
               fontSize: 20,
               border: 'none',
