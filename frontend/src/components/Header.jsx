@@ -65,7 +65,7 @@ export default function Header(){
             fontSize: 'h1.fontSize',
         }}>
             <a href="/home" style={{
-                fontSize: 'h2.fontSie',
+                fontSize: 'h2.fontSize',
                 textDecoration: "none", 
                 color:"white", 
                 fontWeight: 'bold',
