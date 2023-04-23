@@ -13,14 +13,14 @@ export default function SearchSection({loading, ingredients, addIngredient, dele
         alignItems='flex-start'
         container
         spacing={1}>
-            <Grid container item xs = {5} direction = 'column'>
+            <Grid container item xs = {5} direction = 'column' height={'85vh'}>
                 <Box
                 margin={8}>
                 <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} addIngredient={addIngredient}/>
                 <SearchList searchQuery={searchQuery} ingredients={ingredients} addIngredient={(ingredientName) => addIngredient(ingredientName)}/>
                 </Box>
             </Grid>
-            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'80vh'}>
+            <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'85vh'}>
                 <Box 
                 margin={8}
                 marginBottom={4}

@@ -12,6 +12,9 @@ export default function IngredientCart() {
     const [loading, setLoading] = React.useState(false);
     const [recipe, setRecipe] = React.useState({});
     function addIngredient(ingredientName){
+        if (ingredientName === ''){
+            return;
+        }
         const newIngredients = ingredients.map((ingredient) => {
             if(ingredient.name === ingredientName){
                 return {...ingredient, quantity: ingredient.quantity + 1}

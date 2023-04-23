@@ -17,7 +17,7 @@ export default function Favorites() {
         let tiles = []
         if (cache["favorites"].length === 0) return []
         for (var i = 0; i < cache["favorites"].length; i++) {
-            tiles.push(<RecipeTile recipe={cache["favorites"][i]} setCache={setCache}/>)
+            tiles.push(<RecipeTile key={cache["favorites"][i].id} recipe={cache["favorites"][i]} setCache={setCache}/>)
         }
         return tiles
     }

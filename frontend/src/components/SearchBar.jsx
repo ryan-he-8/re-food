@@ -24,7 +24,25 @@ export default function SearchBar({searchQuery, setSearchQuery, addIngredient}) 
               justifyContent: 'center',
               backgroundColor: '#58A57B'
             }}
-            InputProps={{endAdornment: 
+            onKeyDown={(ev) => {
+              if (ev.key === 'Enter'){
+                addIngredient(searchQuery);
+                setSearchQuery('');
+                ev.preventDefault();
+              }
+            }}
+            value={searchQuery}
+            InputProps={{
+            startAdornment: 
+            <SearchIcon
+            style={{
+              color: 'white',
+              margin: 5,
+              fontWeight: 'bold',
+              fontSize: 30
+            }}
+            />,
+            endAdornment: 
             <Button
             onClick={() => {addIngredient(searchQuery); setSearchQuery('')}}
             style={{
@@ -45,7 +63,6 @@ export default function SearchBar({searchQuery, setSearchQuery, addIngredient}) 
           fontSize: '20 ',
         color: 'white'}}
         >
-            {searchQuery}
         </TextField>
         
        

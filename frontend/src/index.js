@@ -7,16 +7,16 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { BrowserRouter, Router } from 'react-router-dom/cjs/react-router-dom.min';
+import {createBrowserHistory} from 'history';
 
 
+const history = createBrowserHistory();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
