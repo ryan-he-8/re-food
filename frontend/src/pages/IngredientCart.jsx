@@ -3,6 +3,7 @@ import { List, Box } from '@mui/material'
 import IngredientList from '../components/IngredientList';
 import SearchSection from '../components/SearchSection';
 import RecipeDisplay from '../components/RecipeDisplay';
+import {getRecipe, getRecipeImage, getRecipeImageSD} from '../requests/getRequests'
 
 export default function IngredientCart() {
     const [displayRecipe, setDisplayRecipe] = React.useState(false);
@@ -43,18 +44,29 @@ export default function IngredientCart() {
         setIngredients(newIngredients)
     }
     function generateRecipe(ingredientsList) {
-        const endpoint = ''
-        let id = Math.floor(Math.random() * 1000000000);
-        // filler, need to make api request for real recipe
-        let options = ['cook it', 'bake it', 'make it']
-        const newRecipe = {
-            name: 'example recipe',
-            image: 'https://fastly.picsum.photos/id/1000/200/300.jpg?hmac=fTFlkBSHCXIXMoNE-1_EshZ91TrzHgY8YhIzYDRwH2c',
-            instructions: options[Math.floor(Math.random() * options.length)],
-            saved: false,
-            id: id
+        console.log("in generateRecipe")
+        let newIngredientsList = []
+        for (let i=0; i < ingredientsList.length; i++) {
+            newIngredientsList.push(ingredientsList[i]['amount'] + " " + ingredientsList[i]["name"])
         }
-        setRecipe(newRecipe);
+        console.log(newIngredientsList)
+       getRecipe(newIngredientsList).then((recipe) => {
+            console.log("name=" + recipe["name"])
+            getRecipeImageSD(recipe["name"]).then((recipeImage) => {
+                console.log(recipeImage)
+                let id = Math.floor(Math.random() * 1000000000);
+                let recipeInstructions = recipe["ingredients"] + '\n' + recipe["instructions"]
+                const newRecipe = {
+                    name: recipe["name"],
+                    image: recipeImage,
+                    instructions: recipeInstructions,
+                    saved: false,
+                    id: id
+                }
+                setDisplayRecipe(true)
+                setRecipe(newRecipe);    
+            })
+       })
     }
     function saveRecipe(favRecipe) {
         // save recipe to local storage
@@ -106,7 +118,7 @@ export default function IngredientCart() {
             addIngredient = {(e) => addIngredient(e)}
             deleteIngredient = {(e) => deleteIngredient(e)}
             clearIngredients = {(e) => clearIngredients(e)}
-            switchToRecipe = {() => {generateRecipe(ingredients); setDisplayRecipe(true);}
+            switchToRecipe = {() => {generateRecipe(ingredients);}
         }
             />
         </div>

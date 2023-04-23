@@ -13,17 +13,18 @@ export default function RecipeDisplay({ingredients, switchToCart, recipe, genera
         container
         spacing={1}
         >
-            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'84vh'}>
+            <Grid container item xs = {5.5} direction = 'column' justifyContent='center' height={'84vh'} flexDirection={'column'}>
                 <Grid container item xs = {8} border={5} borderColor={'red'} direction='column'>
-                    <RecipeImage title={
-                        'Chicken Soup'
+                    <RecipeImage image={recipe.image} title={
+                        recipe.name
                     } summary = {
-                        'A classic rustic and cozy meal that is perfect for a cold winter day.'
+                        ''
                     }/>
                 </Grid>
                 <Grid container item xs = {4} direction='column' justifyContent={'center'} border={5} borderColor={'red'}>
                     <Button
-                    onClick={() => switchToCart()}>
+                    onClick={() => switchToCart()}
+                    variant='contained'>
                         Edit
                     </Button>
                     <IngredientSummary

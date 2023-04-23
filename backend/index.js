@@ -5,7 +5,12 @@ const GoogleImages = require('google-images');
 const { Configuration, OpenAIApi } = require("openai");
 const Replicate = require("replicate")
 require("dotenv").config();
- 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
+
 const client = new GoogleImages(process.env.AV1, process.env.AV2);
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -54,8 +59,9 @@ app.get('/recipe', (req, res) => {
   let ingredientsList = req.headers["query"].split(",")
   let recipe = runCompletion(ingredientsList)
   recipe.then((recipe) => {
+    recipe = recipe.replace("Directions:", "Instructions:")
     console.log(recipe)
-    let name = recipe.split("Recipe")[0].trim()
+    let name = recipe.split("Ingredients")[0].trim()
     let instructions = recipe.split("Instructions:")[1].trim()
     let ingredients = recipe.split("Instructions:")[0].split("Ingredients:")[1].trim()
     res.send({
