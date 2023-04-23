@@ -5,12 +5,34 @@ import SearchSection from '../components/SearchSection';
 import RecipeDisplay from '../components/RecipeDisplay';
 import {getRecipe, getRecipeImage, getRecipeImageSD} from '../requests/getRequests'
 import ingredientsList from '../resources/ingredients';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function IngredientCart() {
     const [displayRecipe, setDisplayRecipe] = React.useState(false);
     const [ingredients, setIngredients] = React.useState(ingredientsList);
     const [loading, setLoading] = React.useState(false);
     const [recipe, setRecipe] = React.useState({});
+    let location = useLocation();
+    useEffect(() => {
+            if (typeof(location.state) !== 'undefined' && typeof(location.state.recipe) !== 'undefined') {
+                let stateRecipe = location.state.recipe;
+                console.log(stateRecipe)
+                let newRecipe = {
+                    name: stateRecipe.name,
+                    image: stateRecipe.image,
+                    instructions: stateRecipe.description,
+                    saved: true,
+                    id: stateRecipe.id,
+                }
+                setRecipe(newRecipe);
+                setIngredients(stateRecipe.ingredients);
+                setDisplayRecipe(true);
+            } else {
+                setDisplayRecipe(false);
+            }
+
+    }, [location])
     function addIngredient(ingredientName){
         if (ingredientName === ''){
             return;
@@ -73,6 +95,7 @@ export default function IngredientCart() {
             name: favRecipe.name,
             image: favRecipe.image,
             description: favRecipe.instructions,
+            ingredients: ingredients,
             id: favRecipe.id
         }
         let favorites = JSON.parse(localStorage.getItem("cache"));
