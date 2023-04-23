@@ -4,7 +4,8 @@ import { Box, TextField} from '@mui/material'
 
 export default function HomePage() {
   return (
-    <div style={{backgroundColor: 'rgba(52, 52, 52, 50)'}}>
+    //30F4C5
+    <div style={{backgroundColor: 'rgba(0, 50, 50, 1)'}}>
 
     <Box style={{display: 'flex',
       height: '2000',
@@ -19,7 +20,7 @@ export default function HomePage() {
   }}>
 
       <div style={{ 
-        background: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.rd.com/wp-content/uploads/2016/11/GettyImages-162980721-JVedit.jpg')",
+        background: "linear-gradient(rgba(0, 50, 50, 0.75), rgba(0, 0, 0, 0.5)), url('https://www.rd.com/wp-content/uploads/2016/11/GettyImages-162980721-JVedit.jpg')",
         backgroundRepeat: 'no-repeat',   width:'3000px', height: '1500px',
         alignItems: "center"
 
