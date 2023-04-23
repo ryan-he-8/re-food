@@ -24,7 +24,7 @@ export default function Favorites() {
 
 
   return (    
-  <Box backgroundColor= '#B4D7C4' height="88.4vh" style={{overflowY:"scroll"}}>
+  <Box backgroundColor= '#98C5AD' height="88.4vh" style={{overflowY:"scroll"}}>
         <div id="SideScrollTile" style={{padding:"2em"}}>
             <div>  
                 {getRecipeTiles()}

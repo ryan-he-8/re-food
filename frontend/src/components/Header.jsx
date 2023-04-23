@@ -46,25 +46,30 @@ export default function Header(){
             <a href="/home" style={{
                 textDecoration: "none", 
                 color:"white", 
+                fontWeight: 'bold',
                 paddingRight: "1.5em"
             }}>home</a>
             <a href="/find_recipe" style={{
                 textDecoration: "none", 
                 color:"white", 
+                fontWeight: 'bold',
                 paddingRight: "1.5em"
             }}>find recipe</a>
             <a href="/favorites" style={{
                 textDecoration: "none", 
                 color:"white", 
+                fontWeight: 'bold',
             }}>favorites</a>
         </Box>
         <Box sx={{
             fontSize: 'h1.fontSize',
         }}>
             <a href="/home" style={{
-                fontSize: 'h1.fontSie',
+                fontSize: 'h2.fontSie',
                 textDecoration: "none", 
                 color:"white", 
+                fontWeight: 'bold',
+                paddingRight: '0.5em'
             }}>re-food</a>
         </Box>
 
