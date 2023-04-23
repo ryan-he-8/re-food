@@ -64,7 +64,7 @@ export default function IngredientCart() {
             description: favRecipe.instructions,
             id: favRecipe.id
         }
-        let favorites = JSON.parse(localStorage.getItem("saved"));
+        let favorites = JSON.parse(localStorage.getItem("cache"));
         if (favorites === null) {
             favorites = {favorites: []};
         }
@@ -72,17 +72,17 @@ export default function IngredientCart() {
         console.log(tempRecipe)
         console.log(favorites)
         console.log(recipe)
-        localStorage.setItem("saved", JSON.stringify(favorites));
+        localStorage.setItem("cache", JSON.stringify(favorites));
     }
     function unsaveRecipe(favRecipe) {
         // remove recipe from local storage
-        let favorites = JSON.parse(localStorage.getItem("saved"));
+        let favorites = JSON.parse(localStorage.getItem("cache"));
         if (favorites === null) {
             favorites = {favorites: []};
         }
         let newFavorites = favorites.favorites.filter((recipe) => recipe.id !== favRecipe.id);
         favorites.favorites = newFavorites;
-        localStorage.setItem("saved", JSON.stringify(favorites));
+        localStorage.setItem("cache", JSON.stringify(favorites));
     }
     if (displayRecipe) {
         return (

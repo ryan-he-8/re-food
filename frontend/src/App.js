@@ -11,6 +11,7 @@ import RecipeDisplay from './components/RecipeDisplay';
 import Home from './pages/Home';
 import HomePage from './pages/HomePage';
 import IngredientCart from './pages/IngredientCart';
+import Favorites from './pages/Favorites';
 function App() {
   const theme = useTheme();
   return (
@@ -20,8 +21,8 @@ function App() {
           <Route path="/find_recipe">
             <IngredientCart/>
           </Route>
-          <Route path="/recipe">
-            <RecipeDisplay />
+          <Route path="/favorites">
+            <Favorites/>
           </Route>
           <Route path="/">
             <HomePage />
