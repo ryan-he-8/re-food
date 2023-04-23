@@ -29,7 +29,7 @@ export default function SearchSection({loading, ingredients, addIngredient, dele
                 backgroundColor={'#98C5AD'}
                 //border={1}
                 borderRadius={2}>
-                    {loading?<img src={loadingPan} />:<IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>}
+                    {loading?<img src={loadingPan} width="500px" height="300px"/>:<IngredientList ingredients={ingredients} deleteIngredient={(ingredientName) => deleteIngredient(ingredientName)}/>}
                 </Box>
                 <Box 
                 //border={1} 
