@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 export default function IngredientList({ingredients, deleteIngredient}) {
 
     return (
-        <div>
+        <div overflow='scroll'>
             <List>
                 {ingredients
                 .filter((ingredient) => ingredient.quantity > 0)

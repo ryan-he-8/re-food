@@ -22,9 +22,9 @@ export default function SearchSection({loading, ingredients, addIngredient, dele
             </Grid>
             <Grid container item xs = {7} direction = 'column' justifyContent='center' height={'85vh'}>
                 <Box 
-                margin={8}
-                marginBottom={4}
+                overflow='scroll'
                 flexGrow={1}
+                maxHeight={'70vh'}
                 //borderColor={'black'}
                 backgroundColor={'#98C5AD'}
                 //border={1}

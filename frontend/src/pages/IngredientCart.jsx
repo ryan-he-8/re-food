@@ -87,7 +87,9 @@ export default function IngredientCart() {
                 setDisplayRecipe(true)
                 setRecipe(newRecipe);   
             })
-       })
+       }).catch((error) => {
+        console.log(error);
+        setLoading(false);}) 
     }
     function saveRecipe(favRecipe) {
         // save recipe to local storage

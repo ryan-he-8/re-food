@@ -3,7 +3,6 @@ import { IconButton, List, ListItem, Box } from '@mui/material';
 import { AddBoxOutlined } from '@mui/icons-material';
 export default function SearchList ({searchQuery, ingredients, addIngredient}) {
     function matchQuery(searchQuery, ingredientName){
-        console.log(searchQuery, ingredientName)
         return ingredientName.toLowerCase().includes(searchQuery.toLowerCase());
     }
     return (
