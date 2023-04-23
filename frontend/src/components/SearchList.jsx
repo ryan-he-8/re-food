@@ -8,7 +8,7 @@ export default function SearchList ({searchQuery, ingredients, addIngredient}) {
     }
     return (
         <Box
-        overflow={'scroll'}
+        overflow={'hidden'}
         height={'60vh'}>
         <List
         >
@@ -17,6 +17,13 @@ export default function SearchList ({searchQuery, ingredients, addIngredient}) {
             .filter((ingredient) => matchQuery(searchQuery, ingredient.name))
             .map((ingredient, index) => (
                 <ListItem
+                style={{
+                    backgroundColor:'#73AE8E',
+                    color:'#B4D7C4',
+                    fontSize:20,
+                    paddingLeft: 20
+                    //fontWeight: 'bold',
+                }}
                 key={ingredient.name}
                 secondaryAction = {
                     <IconButton

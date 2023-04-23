@@ -19,7 +19,7 @@ export default function SearchBar({searchQuery, setSearchQuery, addIngredient}) 
             onChange = {(e) => {setSearchQuery(e.target.value)}}
             inputProps={{style: {fontSize: 25, fontFamily: 'Roboto', color: 'white', fontWeight: 'bold'}}}
             style={{
-              width: '100%',
+              width: '105%',
               flexDirection: 'column',
               justifyContent: 'center',
               backgroundColor: '#58A57B'
