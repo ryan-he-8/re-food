@@ -11,7 +11,9 @@ export default function RecipeImage({image, title, summary}) {
             <Box margin={3} display='flex' sx={{height: 350, width: 350}} backgroundColor='#98C5AD' border={0} borderRadius ='5px'>
                 <img alt={title} display={'flex'} style={{width: "25em", height:"auto"}} src={image}/>
             </Box>
-            <Box>
+            <Box sx={{
+                color: 'white'
+            }}>
                 {title}
             </Box>
             <Box>

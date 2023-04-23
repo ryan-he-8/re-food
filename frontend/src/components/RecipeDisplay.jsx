@@ -42,7 +42,7 @@ export default function RecipeDisplay({loading, ingredients, switchToCart, recip
                     ingredients={ingredients}/>
                 </Grid>
             </Grid>
-            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} border={5} borderColor={'red'}>
+            <Grid container item xs = {6.5} direction = 'column' justifyContent='center' height={'85vh'} borderColor={'red'}>
             {loading?<Box 
                 margin={8}
                 marginBottom={4}
@@ -54,7 +54,6 @@ export default function RecipeDisplay({loading, ingredients, switchToCart, recip
                 </Box>:
                 <RecipeSummary instructions={recipe.instructions}/>}
                 <Box 
-                border={1} 
                 flexDirection={'row'} 
                 display={'flex'}
                 margin={8}
